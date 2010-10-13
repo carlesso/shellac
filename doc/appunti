@@ -15,4 +15,12 @@ punto la pressione sonora istantanea è proporzionale allo spostamento della
 punta del fonoincisore in direzione perpendicolare al solco e parallela 
 alla superficie del disco.
 
+<<<<<<< HEAD
 algoritmo polare
+=======
+Altra nota forse utile, riguarda il fatto che le componenti in alta frequenza
+vengono scritte sono caratterizzate da un'ampiezza inferiore rispetto a quelle
+in bassa frequenza, producendo SNR bassi. Per ovviare a questo inconveniente,
+in fase di lettura, si opera un filtraggio per attenuare le componeti in alta
+frequenza.
+>>>>>>> 538266ddbf99e24302cdfe72d72b40ab6f3dcbdf
