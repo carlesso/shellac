@@ -6,8 +6,8 @@ tentativo di creare un file md per la stesura di una roadmap
 
 - - - nevvero
 
------nevveroide
+----- nevveroide
 
-_______sasso
+_______ sasso
 
 _ _ _ _ sacco
