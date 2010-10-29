@@ -2,24 +2,41 @@
 # -*- coding: utf-8 -*-
 
 import Image
+import ImageDraw
 
 from math import sqrt
 from numpy import matrix, linalg
 
-from utils import *
+from lib.utils import *
 
-a = Image.open('test.png')
+import os
+import sys
+
+if len(sys.argv) != 2:
+  sys.stderr.write("Usage: %s image.png\n" % sys.argv[0])
+  sys.exit(1)
+
+image_path = sys.argv[1]
+
+if not os.path.isfile(image_path):
+  sys.stderr.write("Error: %s does not esists!\n" % sys.argv[1])
+  sys.exit(1)
+
+
+a = Image.open(image_path)
 a = a.convert("RGB")
 data = a.load()
 w, h = a.size
 
-border = Image.new("L", (w, h), 255)
+#border = Image.new("L", (w, w), 255)
+border = ImageDraw.Draw(a) #"L", (w, w), 255)
+#2010-10-30 Fix draw of lines 
 
 borders = []
 
 for i in xrange(0, w):
   diff = 0
-  # XXX Hackone per la mancanza di "bordo" nella parte centrale dell'immaine
+  # XXX Hackone per la mancanza di "bordo" nella parte centrale dell'immagine
   if i > 750 and i < (750+600):
     continue
   for j in xrange(10, h, 1):
