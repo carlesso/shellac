@@ -1,0 +1,74 @@
+\documentclass[journal,a4paper,pdftex]{lib/IEEEtran}
+
+\usepackage{acronym}
+\usepackage[latin1]{inputenc}
+\usepackage[italian]{babel,varioref}                    % gestione lingua
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage[dvips]{graphicx}
+
+\renewcommand{\acffont}[1]{\textsl{#1}}
+\newcommand{\quotes}[1]{``#1"}
+\newcommand{\abs}[1]{|#1|}
+\newcommand{\eng}[1]{\emph{#1}} 
+
+\pagestyle{empty}
+
+\title{\textit{Ricostruzione traccia audio
+    attraverso la scansione di dischi ``Shellacc''
+    }\\ \vspace{0.2cm} \small{Corso di Informatica per la
+    Cultura, Prof. Giovanni de Poli
+%Dipartimento di
+%    Ingegneria dell'Informazione, Università degli Studi di Padova
+		\\a.a. 2010-2011 } }
+
+% XXX Inserite matricola e controllate email
+\author{\authorblockN{
+Bonetto Riccardo (-IF),
+Brundo Salvatore (-IF),
+Carlesso Enrico (586563-IF),
+Tubiana Mauro (-IF)}\\
+        \authorblockA{Dipartimento di Ingegneria dell'Informazione -- Università degli Studi di Padova -- Italia \\
+                     \texttt{ \small(bonetto, brundosa, carlesso, tubianam)@dei.unipd.it } } }
+\begin{document}
+\maketitle
+% Spazio alle sezioni che dobbiamo scrivere
+\input{00-introduzione}
+\input{10-workflow}
+\input{20-conclusioni}
+
+\vfill
+
+% La bibliografia la caghiam fuori alla brutta
+% con thebibliography
+
+\begin{thebibliography}{1}
+
+% XXX Si, ci va prima il nome e poi il titolo.
+% Ci pensiam poi
+\bibitem{light-blue1} \emph{Final Report}:
+  Group light-blue Digiital needle
+% \bibitem{opencv} \emph{OpenCV Library}:
+%   http://opencvlibrary.sourceforge.net/
+% \bibitem{gsl} \emph{GNU Scientific Library}: a numerical library for C
+%   and C++ programmers
+% \bibitem{hess} \emph{Hess, R., Sift Feature Detector}: A C implementation of a
+%   SIFT image feature detector, http://web.engr.oregonstate.edu/~hess/index.html
+% \bibitem{tinyOS}
+%   \emph{http://www.tinyos.net/tinyos-2.x/doc/}: \texttt{API and
+%     Tutorial NesC}
+% \bibitem{lowe99} \emph{Lowe, D. G., "Object recognition from local
+%   scale-invariant features,"}: \texttt{Proceedings of International
+%   Conference on Computer Vision, 1999, pp. 1150-1157}
+% \bibitem{lowe04} \emph{Lowe, D. G., "Distinctive Image Features from
+%   Scale-Invariant Keypoints"}: \texttt{International Journal of
+%   Computer Vision, 2004}
+\end{thebibliography}
+
+\onecolumn
+\clearpage
+\input{99-appendice}
+
+\end{document}
+
