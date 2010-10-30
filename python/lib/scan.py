@@ -104,6 +104,6 @@ class Scan:
           #print "(%d, %d) is mapped to (%.3f, %.3f) with ro, theta = (%.3f, %3f)" % (x, y, cp_x, cp_y, ro, theta)
           pass
 
-    self.unfolded_image("unfolded.png")
+    self.unfolded_image.save("unfolded.png")
     #self.unfolded_image.show()
     return
