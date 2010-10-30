@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 
-from math import sqrt
+from math import sqrt, pi
 from numpy import matrix, linalg
 
 class Shape:
@@ -20,6 +21,7 @@ class Shape:
 
     self.center = (x_c, y_c)
     self.radius = r
+    self.diameter = 2*pi*self.radius
 
     print "The center is in (%.3f, %.3f) with a radius of %.4f" % (x_c, y_c, r)
 
