@@ -107,3 +107,4 @@ class Scan:
     self.unfolded_image.save("unfolded.png")
     #self.unfolded_image.show()
     return
+

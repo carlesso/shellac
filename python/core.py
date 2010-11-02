@@ -21,5 +21,6 @@ if not os.path.isfile(image_path):
 s = Scan(image_path)
 s.get_center()
 s.draw_45()
-s.unfold()
+s.hystogram()
+#s.unfold()
 #s.show()
