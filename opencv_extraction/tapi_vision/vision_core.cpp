@@ -3,9 +3,9 @@
 #include <QFile>
 #include <QDebug>
 
-#include <cv.h>
-#include <cvaux.h>
-#include <highgui.h>
+#include <opencv/cv.h>
+#include <opencv/cvaux.h>
+#include <opencv/highgui.h>
 
 #include "vision_core.h"
 

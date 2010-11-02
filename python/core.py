@@ -3,6 +3,7 @@
 
 from lib.utils import *
 from lib.scan import Scan
+from lib.shellac import Shellac
 
 import os
 import sys
@@ -18,9 +19,10 @@ if not os.path.isfile(image_path):
   sys.exit(1)
 
 
-s = Scan(image_path)
-s.get_center()
-s.draw_45()
-s.hystogram()
+s = Shellac(image_path)
+
+#s.get_center()
+#s.draw_45()
+#s.hystogram()
 #s.unfold()
 #s.show()
