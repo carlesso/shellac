@@ -1,0 +1,37 @@
+digraph shellac{
+	
+	start[shape=box]
+	// end[shape=box]
+	stop[shape=point]
+	
+	// LIVELLO 0
+	start -> do_everything
+	
+	// LIVELLO 1
+	do_everything -> set_dir;
+	do_everything -> get_track;
+	do_everything -> get_waves;
+	do_everything -> align_all;
+	do_everything -> find_all_jumps;
+	do_everything -> create_all_songs;
+	
+	set_dir -> get_track -> get_waves -> align_all -> find_all_jumps -> 
+	create_all_songs [color=red, style=dotted, constraint=false];	
+	
+	// LIVELLO 2
+	set_dir->stop
+	
+	get_track->findOuterEdge;
+	get_track->calcCenter;
+	get_track->get_separation;
+	get_track->do_gaussian;
+	
+	findOuterEdge ->calcCenter ->get_separation->do_gaussian 
+	[color=red, style=dotted, constraint=false];
+	
+
+	
+	
+}
+
+

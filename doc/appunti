@@ -21,3 +21,5 @@ in bassa frequenza, producendo SNR bassi. Per ovviare a questo inconveniente,
 in fase di lettura, si opera un filtraggio per attenuare le componeti in alta
 frequenza.
 
+
+round(Vett(1000)*100)/10;
