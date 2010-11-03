@@ -1,8 +1,9 @@
 digraph shellac{
 	
+	// Shape of special boxes
 	start[shape=box]
-	// end[shape=box]
-	stop[shape=point]
+	stop_0[shape=point]
+	stop_1[shape=point];
 	
 	// LIVELLO 0
 	start -> do_everything
@@ -19,7 +20,7 @@ digraph shellac{
 	create_all_songs [color=red, style=dotted, constraint=false];	
 	
 	// LIVELLO 2
-	set_dir->stop
+	set_dir->stop_0;
 	
 	get_track->findOuterEdge;
 	get_track->calcCenter;
@@ -29,9 +30,22 @@ digraph shellac{
 	findOuterEdge ->calcCenter ->get_separation->do_gaussian 
 	[color=red, style=dotted, constraint=false];
 	
+	get_waves->get_wav;
+	
+	align_all->align_waves;
+	align_all->save_aligns;
+	
+	align_waves->save_aligns
+	[color=red, style=dotted, constraint=false];
+	
+	find_all_jumps->stop_1;
+	
+	create_all_songs->load_waves;
+	create_all_songs->create_song;
+	create_all_songs->save_audio;
 
-	
-	
+	load_waves->create_song->save_audio
+	[color=red, style=dotted, constraint=false];
 }
 
 
