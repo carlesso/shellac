@@ -1,0 +1,83 @@
+digraph shellac{
+	
+	// Shape of special boxes
+	start[shape=box]
+	stop_0[shape=point]
+	stop_1[shape=point];
+	
+	// LIVELLO 0
+	start -> do_everything
+	
+	// LIVELLO 1
+	do_everything -> set_dir;
+	do_everything -> get_track;
+	do_everything -> get_waves;
+	do_everything -> align_all;
+	do_everything -> find_all_jumps;
+	do_everything -> create_all_songs;
+	
+	set_dir -> get_track -> get_waves -> align_all -> find_all_jumps -> 
+	create_all_songs [color=red, style=dotted, constraint=false];	
+	
+	// LIVELLO 2
+	set_dir->stop_0;
+	
+	get_track->findOuterEdge;
+	get_track->calcCenter;
+	get_track->get_separation;
+	get_track->do_gaussian;
+	
+	findOuterEdge ->calcCenter ->get_separation->do_gaussian 
+	[color=red, style=dotted, constraint=false];
+	
+	get_waves->get_wav;
+	
+	align_all->align_waves;
+	align_all->save_aligns;
+	
+	align_waves->save_aligns
+	[color=red, style=dotted, constraint=false];
+	
+	find_all_jumps->stop_1;
+	
+	create_all_songs->load_waves;
+	create_all_songs->create_song;
+	create_all_songs->save_audio;
+
+	load_waves->create_song->save_audio
+	[color=red, style=dotted, constraint=false];
+	
+	// LIVELLO 3
+}
+
+digraph label{
+	label="label of the graph"
+	{
+		rank=same;
+		caller;
+		before;
+	}
+	{
+		rank=same;
+		called;
+		after;
+	}
+	caller->called;
+	before->after[color=red, style=dotted, constraint=false];
+	
+}
+
+digraph princeton{
+	
+	A[label="record scanning"]
+	B[label="center of record detection"]
+	C[label="track separation detection"]
+	D[label="rectification"]
+	E[label="wave extraction"]
+	F[label="alignment and track reconstruction"]
+	G[label="audio post-processing"]
+	
+	A->B->C->D->E->F->G;
+}
+
+
