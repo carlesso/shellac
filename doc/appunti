@@ -21,3 +21,30 @@ in bassa frequenza, producendo SNR bassi. Per ovviare a questo inconveniente,
 in fase di lettura, si opera un filtraggio per attenuare le componeti in alta
 frequenza.
 
+RESOCONTO DOC_FINAL DIGITAL BLUE
+
+	-correlazione rumore-immagine
+		*sembra essere vero che aumentando il numero di scansioni, per
+		 esempio da 4 a 8, il rumore di sistema e il rumore di processo,
+		 diminuiscono (poco interessante a tutta prima).
+		
+	-image processing
+		*il modulo che si occupa di processare l'immagine, si divide nei
+		 seguenti sottomoduli:
+			+Orientation : cerca un punto fisso di riferimento per tutte 
+			 le immagini{
+			 #
+			 }
+			+Transformation : trasforma l'immagine in una forma più facile
+			 da leggere
+			+Cropping : taglia la parte di  immagine in eccesso;
+			+Formats: (non molto chiaro) per accordarsi con le specifiche
+			 generali dell'immagine.
+	-sound extraction
+		+Track localization : operazione che serve per individuare le traccie;
+		+Track following : estrae le informazioni seguendo la traccia 
+		 individuata sopra.
+		 
+RESOCONTO LIGHTGREEN
+	
+	
