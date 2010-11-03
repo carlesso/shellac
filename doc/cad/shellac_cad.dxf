@@ -21,29 +21,33 @@ $DIMGAP
  40
 0.625
   9
-$DIMEXO
- 40
-0.625
-  9
 $INSUNITS
  70
 4
+  9
+$DIMEXO
+ 40
+0.625
   9
 $DIMTXT
  40
 2.5
   9
-$PLIMMAX
- 10
-210.0
- 20
-297.0
+$DIMSTYLE
+  2
+Standard
   9
 $PLIMMIN
  10
 0.0
  20
 0.0
+  9
+$PLIMMAX
+ 10
+210.0
+ 20
+297.0
   9
 $DIMEXE
  40
@@ -1267,7 +1271,7 @@ ByLayer
  30
 0.0
  40
-1205.0
+550.0
   0
 CIRCLE
   5
@@ -1291,7 +1295,7 @@ ByLayer
  30
 0.0
  40
-37.5
+1160.0
   0
 CIRCLE
   5
@@ -1309,13 +1313,13 @@ AcDbCircle
   6
 ByLayer
  10
-0.0
+-5.0
  20
 0.0
  30
 0.0
  40
-620.0
+1205.0
   0
 CIRCLE
   5
@@ -1339,7 +1343,7 @@ ByLayer
  30
 0.0
  40
-1155.0
+30.0
   0
 ENDSEC
   0
