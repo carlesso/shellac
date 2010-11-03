@@ -46,6 +46,38 @@ digraph shellac{
 
 	load_waves->create_song->save_audio
 	[color=red, style=dotted, constraint=false];
+	
+	// LIVELLO 3
+}
+
+digraph label{
+	label="label of the graph"
+	{
+		rank=same;
+		caller;
+		before;
+	}
+	{
+		rank=same;
+		called;
+		after;
+	}
+	caller->called;
+	before->after[color=red, style=dotted, constraint=false];
+	
+}
+
+digraph princeton{
+	
+	A[label="record scanning"]
+	B[label="center of record detection"]
+	C[label="track separation detection"]
+	D[label="rectification"]
+	E[label="wave extraction"]
+	F[label="alignment and track reconstruction"]
+	G[label="audio post-processing"]
+	
+	A->B->C->D->E->F->G;
 }
 
 
