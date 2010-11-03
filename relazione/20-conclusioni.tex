@@ -1,0 +1,54 @@
+\section{Conclusioni}
+\subsection{Rispetto delle specifiche}
+Per minimizzare il consumo energetico dei nodi sensore il sistema
+prevede che i moteOBJ in modalit\`a di funzionamento standard tengano
+accesa l'interfaccia radio per una finestra temporale di durata
+limitata, intervallata a periodi di attesa. I moteOBJ usano
+l'interfaccia radio in modo attivo solo se sollecitati da un pacchetto
+inviato da un motePC. La trasmissione delle SIFT \`e incrementale, in
+modo da poter minimizzare l'utilizzo dell'interfaccia radio nel caso
+che il matching non richieda tutte le SIFT che il tmote
+possiede. Infine quando il PC sceglie un tmote per richiedere le sue
+SIFT gli altri tmote vengono spenti con un pacchetto SLEEP per evitare
+che siano inutilmente attivi.
+
+Gli eventi missed detection e false detection sono unicamente
+imputabili al sistema
+di matching utilizzato, come gi\`a spiegato le SIFT rappresentano un
+descrittore particolarmente robusto nei confronti di questi eventi,
+anche se, come i tutti gli algoritmi di matching basati su periferiche di
+visione, il risultato \`e molto influenzato dall'illuminazione
+dell'ambiente circostante.
+
+La velocit\`a di spostamento consentita all'agente mobile \`e limitata
+dalla complessit\`a computazionale richiesta dall'algoritmo di
+matching, e dalla necessaria nitidezza dell'immagine acquisita con la
+camera.
+
+\subsection{Risultati ottenuti}
+Il sistema \`e stato testato con tre oggetti diversi ed un pc atto
+alla ricerca. Son stati analizzati in dettaglio tutti i passaggi dei
+vari programmi e verificati i funzionamenti di tutti i tipi di
+pacchetto. 
+
+Sia la parte relativa al protocollo di comunicazione implementata sui
+sensori, sia il programma di {\em matching} hanno dato buoni
+risultati. 
+
+\subsection{Considerazioni finali}
+Il punto di forza dello sviluppo risiede sicuramente nel protocollo,
+ideato e strutturato ad-hoc per il progetto. Implementa tutte
+delle necessit\`a emerse nel corso dello sviluppo. La struttura dello
+stesso \`e indipendente dall tipo di dati che vengono
+scambiati. Agendo solamente sul SIFT ID e sul sequence number \`e
+possibile immagazzinare e poi interagire con qualsiasi struttura dati.
+
+La robustezza del matching attraverso le sift richiede per\`o un
+discreto costo computazionale, forse eccessivo per l'utilizzo in
+agenti mobili dotati di CPU a clock ridotto.
+
+Per quanto riguarda il consumo energetico del sistema, la nostra
+implementazione si \`e concentrata nell'ottimizzazione dell'utilizzo
+dell'interfaccia radio, rendendo parametrici gli intervalli di sleep e
+discover in maniera che possano essere impostati a seconda dello
+scenario.
