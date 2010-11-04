@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+
+
+
+=======
 tentativo di creare un file md per la stesura di una roadmap
 
 >[task_1] 
@@ -8,4 +13,4 @@ tentativo di creare un file md per la stesura di una roadmap
 
 [_task_2_]
 
-`for`
+

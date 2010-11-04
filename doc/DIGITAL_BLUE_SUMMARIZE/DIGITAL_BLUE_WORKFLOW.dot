@@ -1,0 +1,17 @@
+digraph DIGITAL_BLUE_WORKFLOW{
+	
+	A[label="image_processing"]{
+	Orientation->
+	Transformation->
+	Cropping->
+	Formats
+	}
+	
+	B[label="sound_exctraction"]{
+		Track_Localization->
+		Track_Following
+	}
+	
+	A->B
+	
+}
