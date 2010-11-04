@@ -2,9 +2,31 @@ digraph shellac{
 	
 	// Shape of special boxes
 	start[shape=box]
-	stop_0[shape=point]
-	stop_1[shape=point];
 	
+	{	
+		node[color="darkviolet", style=filled, shape=point];
+			stop_0;
+			stop_1;
+			stop_2;
+			stop_3;
+			stop_4;
+			stop_5;
+			stop_6;
+			stop_7;
+			stop_8;
+			stop_9;
+			stop_10;
+			stop_11;
+			stop_12;
+			stop_13;
+			stop_14;
+			stop_15;
+			stop_16;
+			stop_17;
+			stop_18;
+			stop_19;
+			stop_20;
+	}
 	// LIVELLO 0
 	start -> do_everything
 	
@@ -48,8 +70,76 @@ digraph shellac{
 	[color=red, style=dotted, constraint=false];
 	
 	// LIVELLO 3
+	findOuterEdge->stop_2;
+	calcCenter->stop_3;
+	get_separation->do_gaussian1d;
+	do_gaussian->stop_4;
+	
+	A[label="do_gaussian1d"];
+	get_wav->A;
+	
+	align_waves->find_stats_rand;
+	align_waves->find_diffs;
+	align_waves->find_stats;
+	
+	find_stats_rand->find_diffs->find_stats[color=red, style=dotted, constraint=false];
+	
+	save_aligns->stop_5;
+	
+	load_waves->stop_6;
+	
+	create_song->find_bundle_begin;
+	create_song->load_aligns;
+	B[label="load_waves"]
+	create_song->B;
+	create_song->incSecGr;
+	create_song->find_bundle_end;
+	create_song->copyChunk;
+	
+	find_bundle_begin->load_aligns->B->incSecGr->find_bundle_end->copyChunk
+	[color=red, style=dotted, constraint=false];
+	
+	save_audio->stop_7;
+	
+	// LIVELLO 4
+	do_gaussian1d->stop_8;
+	A->stop_9;
+	find_stats_rand->stop_10;
+	find_diffs->stop_11;
+	find_stats->stop_12;
+	
+	C[label="load_aligns"];
+	D[label="load_waves"];
+	find_bundle_begin->C;
+	find_bundle_begin->D;
+	
+	load_aligns->stop_13;
+	B->stop_14;
+	
+	incSecGr->stop_15;
+	copyChunk->stop_16;
+	
+	E[label="load_aligns"];
+	F[label="load_waves"];	
+	find_bundle_end->E;
+	find_bundle_end->F;
+	
+	
+	// LIVELLO 5
+	
+	C->stop_17;
+	D->stop_18;
+	
+	E->stop_19;
+	F->stop_20;
+	
+	
+	
+	
+		
 }
 
+// subgraph cluster01{
 digraph label{
 	label="label of the graph"
 	{
