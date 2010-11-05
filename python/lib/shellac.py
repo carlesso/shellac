@@ -6,7 +6,7 @@ import cv
 import datetime
 
 from numpy import matrix
-from math import sqrt, pi, sin, cos
+from math import sqrt, pi, sin, cos, ceil, floor
 
 class Shellac:
   def __init__(self, path):
@@ -30,7 +30,7 @@ class Shellac:
     self.center_detection()
     # self.extrapolate_line()
     self.unfold(0.1, 0.5)
-    #self.show(self.canny)
+    self.show(self.unfold)
 
   def extrapolate_line(self, step = 0):
     self.line = cv.CreateImage((1, self.radius), 8, 1)
@@ -73,6 +73,7 @@ class Shellac:
     raw_input()
 
     self.unfolded = cv.CreateImage((_top - _bottom, self.radius), 8, 1)
+    print "non creo l'immagine?"
     
     theta_min = 3.0/4*pi
     theta_max = 1.0/4*pi
@@ -90,7 +91,7 @@ class Shellac:
         cp_x, cp_y = (cp_x + self.center[0], self.center[1] - cp_y)
         try:
           # XXX Si può verificare int, floor, ceil per vedere qualità
-          self.unfolded[y - _bottom, y] = self.image[int(cp_y), int(cp_x)]
+          self.unfolded[y - _bottom, x] = self.image[int(cp_y), int(cp_x)]
         except Exception, e:
           print "Sono andato fuori!", e
     
@@ -99,17 +100,22 @@ class Shellac:
 
   def center_detection(self):
     w = self.canny.width
+    h = self.canny.height
     self.borders = []
-    for i in xrange(int(w*.05), int(w*.33)):
-      try:
-        self.borders.append((i, self.canny[i].tostring().index(chr(255))))
-      except ValueError:
-        pass
-    for i in xrange(int(w*.66), int(w*.95)):
-      try:
-        self.borders.append((i, self.canny[i].tostring().index(chr(255))))
-      except ValueError:
-        pass
+    for x in xrange(int(w*.03), int(w*.97), 50):
+      print "X =>", x, w
+      for y in xrange(int(h*.05), int(h*.95)):
+        if self.canny[y, x] > 100:
+          try:
+            #x, y = self.canny[i].tostring().index(chr(255)), i
+            self.borders.append((x, y))
+            for p in range(100):
+              self.image[y-p, x] = 0
+          except ValueError:
+            pass
+          finally:
+            break
+    print self.borders
     self.get_center()
 
   def get_center(self):
@@ -124,8 +130,11 @@ class Shellac:
     r = sqrt(self.a[2] + x_c**2 + y_c**2)
     
     
+    # XXX Hackone per errore nella detectoin del centro
+
+    y_c += 40
     self.center_f = (x_c, y_c)
-    self.center = (int(x_c), int(y_c))
+    self.center = (ceil(x_c), floor(y_c))
     self.radius_f = r
     self.radius = int(r)
     self.diameter_f = 2*pi*self.radius
@@ -133,7 +142,11 @@ class Shellac:
     # Stores the size we want to work with
     self.myborder_f = 2*pi*self.radius
     self.myborder = int(2*pi*self.radius)
-
+    for a in range(10):
+      self.image[self.center[1] + a, self.center[0] + a] = 0 
+      self.image[self.center[1] + a, self.center[0] - a] = 0 
+      self.image[self.center[1] - a, self.center[0] + a] = 0 
+      self.image[self.center[1] - a, self.center[0] - a] = 0 
     print "The center is in (%.3f, %.3f) with a radius of %.4f" % (x_c, y_c, r)
   
     
