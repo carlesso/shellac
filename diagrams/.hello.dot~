@@ -1,0 +1,20 @@
+//COMPILARE CON
+//dot hello.dot -Tps -o hello.ps
+
+graph hello {
+	// Comment: Hello World from ``dot``
+	// a graph with a single node Node1
+	
+	Node1 [label="Hello, World!"]
+}
+
+
+
+digraph simple_hierarchy {
+	B [label="The boss"]      // node B
+	E [label="The employee"]  // node E
+	B->E [label="commands", fontcolor=darkgreen] // edge B->E
+}
+
+
+

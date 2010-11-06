@@ -1,0 +1,58 @@
+digraph F{
+	
+	node[shape=box,style=filled,fillcolor="gray"];
+	rankdir=LR;
+	
+	{	
+		rank=same;
+		img[label="image_processing"];
+		sound[label="sound_processing"];
+	}
+	
+	subgraph img_proc{															
+		img->
+		{
+			rank=same;
+			orient[label="Orientation"]
+			transf[label="Transformation"]
+			croppi[label="Cropping"]
+			format[label="Formats"]
+			
+			orient->
+			transf->
+			croppi->
+			format[style=dotted,color=blue];
+		}
+		
+		{	
+			node[style=filled,fillcolor=white,fontsize=6];
+			doc_orient[label="cerca un punto fisso di riferimento per tutte le immagini"];
+			doc_transf[label="trasforma l'immagine in una forma più facile da leggere, i.e la tira dritta"];
+			doc_croppi[label="taglia la parte di  immagine in eccesso"];
+			doc_format[label="formatta le immagini"];
+		}
+		
+		{
+			edge[arrowhead=box,arrowsize=.5];
+			orient->doc_orient;
+			transf->doc_transf;
+			croppi->doc_croppi;
+			format->doc_format;
+		}
+	}	
+	
+	
+	subgraph snd_extract{
+		sound->
+		{
+			rank=same;
+			Track_Selection->Track_Extraction[color=blue,style=dotted];
+		}
+	}
+	
+	img->sound;
+}
+
+
+
+
