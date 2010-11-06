@@ -17,6 +17,8 @@ sep_list = [];
 mn=0;
 st=0;
 
+% Errore nella detection del centro
+% r1 = r1/2
 if (Gdebug == 1)
 	y
 	x
@@ -27,7 +29,9 @@ if (Gdebug == 1)
 	x
 end
 
-
+% 'Faccio questo'
+% sprintf('[%d, %d] : [%d, %d]', floor(y-r1), floor(y-r2), floor(x)-50, floor(x)+50)
+% Grecord(floor(y-r1):floor(y-r2),floor(x)-50:floor(x)+50);
 section = transpose(Grecord(floor(y-r1):floor(y-r2),floor(x)-50:floor(x)+50));
 f=0;
 [h w] = size(section);
