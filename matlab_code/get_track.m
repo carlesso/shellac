@@ -47,7 +47,7 @@ for num_img=1:Gnum_scans
   %ec
   disp(sprintf('Center detected at(%d, %d). Radius is %s', x, y, r))
 
-  if size(Grecord) != 2
+  if size(Grecord) ~= 2
     error('The image must be in grayscale!')
   end
 
