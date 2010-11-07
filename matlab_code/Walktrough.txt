@@ -1,0 +1,16 @@
+Walktrough del codice matlab
+============================
+
+Per poter far qualcosa i prerequisiti sono:
+  1. Avere una directory - per comodità d'ora in poi 'scans/' nella root di dove sono dislocati i file .m
+  2. All'interno di questa directory avere i file delle scansioni, numerati da 1 a n (4 per ora) in estensione PNG, e SOPRATTUTTO IN SCALA DI GRIGIO.
+
+Si parte da do_everything.m, che va chiamato col nome della directory contenente le scansioni, il numero delle scansioni e gli rpm del disco. Una chiamata tipo è:
+
+ % do_everythung scans 4 78 # Sia il numero di scansioni che rpm sono facoltativi
+
+* set_dir.m
+Do everything chiama set_dir.m con gli stessi parametri. E' possibile passargli anche smooth_image e smooth_wave, che se non presenti sono inizializzati rispettivamente a 2 e 5. Inizializza l'environment di variabili per i passi successivi.
+
+*get_track.m
+Inizia a caricare l'immagine, ho aggiunto un paio di informazioni di debug marcate con %ec

@@ -44,10 +44,12 @@ for num_img=1:Gnum_scans
 	  x=c(2);
 	  r=c(3);
 	end
-	%'Found center'
-	%y
-	%x
-	%r
+  %ec
+  disp(sprintf('Center detected at(%d, %d). Radius is %s', x, y, r))
+
+  if size(Grecord) != 2
+    error('The image must be in grayscale!')
+  end
 
 	[h w] = size(Grecord);
 	if (Gdebug)
@@ -75,7 +77,7 @@ for num_img=1:Gnum_scans
 
 		% get separations list
 
-		sep_list = get_separation(y,x,r1,r2);
+		sep_list = get_separation(y, x, r1, r2);
 		% add sentinels to separation list
 		siz = length(sep_list);
 		r1 = sep_list(1);
@@ -93,14 +95,11 @@ for num_img=1:Gnum_scans
 	
 	% get intersection of record with left boundary
 	y_left= y-sqrt(r^2-(x-1)^2);
-	r
-	x
-	y_left
 
 	% get intersection of record with right boundary
 	y_right = y-sqrt(r^2-(x-sz(2))^2);
-	y_right
-	%error('Qualcosa è sbagliato');
+  %ec
+  % Nel caso l'immagine non sia in grayscale y_left risulta essere un numero complesso
 
 	if (Gdebug==1)
 	  line([1 x], [y_left y]);
@@ -108,10 +107,7 @@ for num_img=1:Gnum_scans
 	  drawnow;
 	 end
 
-
 	theta_left = atan((2-x)/(y_left-y));
-	% y_left è complesso
-	y_left
 	theta_right = atan((sz(2)-1-x)/(y_right-y));
 	
 	width = floor((theta_left-theta_right)/delta);
@@ -126,8 +122,6 @@ for num_img=1:Gnum_scans
 	i_sep = 1;
 	num_file = 1;
 	r_big = r1;
-	% r_small è un complesso. Perchè?
-	% r_small = max(r1-height_per_file+1, sep_list(i_sep+1))
 	r_small = floor(0.3*r1)
 
 	% a vector which tells, for each bundle, what song it belongs to.
@@ -135,14 +129,6 @@ for num_img=1:Gnum_scans
 
 	while(1)
 		num_file;
-		%sprintf('mi rompo con zeros(%d-%d+1, %f)\n', r_big, r_small, width)
-		% ec_start = r_big-r_small + 1
-		% ec_end = width
-		% class(width)
-		% class(ec_end)
-		% ec_bouns = [ec_start, ec_end]
-		% ec_bouns = [r_big-r_small+1, width]
-		% track_piece = zeros(r_big-r_small+1, width);
 		track_piece = zeros(1726, 5129);
 		for i=1:width
 			tmpcos = cos(theta_right + i*delta);
@@ -150,7 +136,6 @@ for num_img=1:Gnum_scans
 			for r0 = r_big:-1:r_small
 
 				% warping: get a weighted sum of 4 neighboring pixels
-
 				y0=min(max(y-r0*tmpcos,1), sz(1)-1);
 				x0=min(max(x-r0*tmpsin,1), sz(2)-1);
 				y0_int = floor(y0);
@@ -161,10 +146,8 @@ for num_img=1:Gnum_scans
 %				if (patch_flag && mod(i,20) == 0 && r0==r1)
 %				  line([x0_int x0_int], [y0_int y0_int]);
 %				end
-				tmp  = double(Grecord(y0_int,x0_int))*(1-y0_frac)*(1-x0_frac)+double(Grecord(y0_int+1,x0_int))*(y0_frac)*(1-x0_frac)+double(Grecord(y0_int,x0_int+1))*(1-y0_frac)*(x0_frac)+double(Grecord(y0_int+1,x0_int+1))*y0_frac*x0_frac;
+				tmp = double(Grecord(y0_int,x0_int))*(1-y0_frac)*(1-x0_frac)+double(Grecord(y0_int+1,x0_int))*(y0_frac)*(1-x0_frac)+double(Grecord(y0_int,x0_int+1))*(1-y0_frac)*(x0_frac)+double(Grecord(y0_int+1,x0_int+1))*y0_frac*x0_frac;
         track_piece(r_big-r0+1,i) = uint8(tmp);
-				%catch	
-				%	sprintf('Mi spacco con (%d-%d+1,%d)\n', r_big, r0, i)
 			end		
 		end
 		outfile = sprintf('%s/%d.%d.trk.mat', Gdir, num_img, num_file)
@@ -204,7 +187,6 @@ for num_img=1:Gnum_scans
 %	imagesc(track_piece);
 
 %	Save the song structure to a file.
-	'MA CI ARRIVO?'
 	if (num_img == 1)
 		save(sprintf('%s/song_struct.mat', Gdir), 'song_struct');
 	end
