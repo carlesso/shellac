@@ -29,9 +29,12 @@ global Gnum_scans
 
 colormap(gray);
 
-Gnum_scans = eval(Gnum_scans)
+%ec
+% Era una stringa, andava convertito in intero
+Gnum_scans = eval(Gnum_scans);
 
 for num_img=1:Gnum_scans
+  disp(sprintf('Start working on image number %d', num_img));
 	Grecord = imread(sprintf('%s/%d.png',Gdir,num_img));
 	sz = size(Grecord);
 	figure(1);
@@ -47,7 +50,7 @@ for num_img=1:Gnum_scans
   %ec
   disp(sprintf('Center detected at(%d, %d). Radius is %s', x, y, r))
 
-  if size(Grecord) ~= 2
+  if size(size(Grecord)) ~= 2
     error('The image must be in grayscale!')
   end
 
@@ -122,7 +125,8 @@ for num_img=1:Gnum_scans
 	i_sep = 1;
 	num_file = 1;
 	r_big = r1;
-	r_small = floor(0.3*r1)
+  r_small = max(r1-height_per_file+1, sep_list(i_sep+1));
+	% r_small = floor(0.3*r1);
 
 	% a vector which tells, for each bundle, what song it belongs to.
 	song_struct = [i_sep];
@@ -150,7 +154,7 @@ for num_img=1:Gnum_scans
         track_piece(r_big-r0+1,i) = uint8(tmp);
 			end		
 		end
-		outfile = sprintf('%s/%d.%d.trk.mat', Gdir, num_img, num_file)
+		outfile = sprintf('%s/%d.%d.trk.mat', Gdir, num_img, num_file);
 		center_x = x;
 		center_y = y;
 		radius = r;

@@ -67,7 +67,7 @@ mx = max(section_conv_kernel);
 %end
 for i=w:-1:1
   if (section_conv_kernel(i) > Gstart_end_thresh * mx)
-    effective_end = i
+    effective_end = i;
     break;
   end
 end
