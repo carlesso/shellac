@@ -1,0 +1,126 @@
+\documentclass[pdftex,10pt]{beamer}
+\usepackage[italian]{babel}
+%~ \usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+
+%inclusione immagini:
+\usepackage{graphicx}
+%~ \usepackage{multicol}
+
+%inclusione codice:
+%~ \usepackage{listings}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts} 
+\usepackage{multicol}
+
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\usepackage{url}
+
+%~ \usepackage[dvips]{graphicx}
+%~ \graphicspath{{figures/}}
+
+
+%~ NON SI POSSONO INSERIRE IMMAGINI IN EPS!
+\DeclareGraphicsExtensions{.png, .jpg, .jpeg, .pdf}
+%~ \usepackage[pdftex]{graphicx}
+
+\usepackage{acronym}
+
+%Tema colore:
+%\usecolortheme{albatross} 	%giallo su blu
+%\usecolortheme{dove} 		%bianco e grigio
+%\usecolortheme{seahorse}	%lilla
+%\usecolortheme{beaver}		%rosso/bianco
+%\usecolortheme{fly}		%sfondo grigio
+%\usecolortheme{sidebartab}	%rosso/bianco
+%\usecolortheme{beetle}		%``blu''/grigio
+%\usecolortheme{lily}		%rosso/bianco
+%\usecolortheme{crane} 		%Giallo
+%usecolortheme{orchid}		%rosso/bianco
+%\usecolortheme{whale}		%blu
+%\usecolortheme{rose}		%rosso/bianco
+%\usecolortheme{wolverine}	%giallo/blu
+%\usecolortheme{dolphin}	%blu chiaro
+%\usecolortheme{seagull}	%bianco/grigio
+
+%Tema:
+%\usetheme{AnnArbor}
+%\usetheme{Copenhagen}
+%\usetheme{JuanLesPins}
+%\usetheme{Rochester}
+%\usetheme{Antibes}
+%\usetheme{Darmstadt}
+%\usetheme{Luebeck}
+%\usetheme{Singapore}
+%\usetheme{Bergen}
+%\usetheme{default}
+%\usetheme{Madrid}
+%\usetheme{Szeged}
+%\usetheme{Berkeley}
+%\usetheme{Dresden}
+%\usetheme{Malmoe}
+\usetheme{Warsaw}
+%\usetheme{Berlin}
+%\usetheme{Frankfurt}
+%\usetheme{Marburg}
+%\usetheme{Boadilla}
+%\usetheme{Goettingen}
+%\usetheme{Montpellier}
+%\usetheme{boxes}
+%\usetheme{Hannover}
+%\usetheme{PaloAlto}
+%\usetheme{CambridgeUS}
+%\usetheme{Ilmenau}
+%\usetheme{Pittsburgh}
+
+%utili comandi:
+\newcommand{\qmo}{``} 
+\newcommand{\qmc}{'' }
+\newcommand{\cpr}{$^{\copyright{}}$}
+
+\title[Titolo]{Progetto:
+	\textit{Sottotitolo}\\ 
+	\vspace{0.2cm}
+	\small{Corso\\ Professore} 
+}
+
+\author[Autore1 - Autore2 - Autore3 - Autore4]
+{
+		\small{
+		Autore1(Matricola1),\\
+		Autore2(Matricola2),\\
+		Autore3(Matricola3),\\
+		Autore4(Matricola4)
+		}
+}
+\institute[Universit\`a degli Studi di Padova]
+{
+Universit\`a degli Studi di Padova \\
+Facolt\`a di Ingegneria \\
+Anno Accademico 2009-2010
+}
+\date{}
+
+%\setbeamertemplate{navigation symbols}{\tiny\insertframenumber{}/\inserttotalframenumber{}}
+%\logo{\tiny\insertframenumber{}/\inserttotalframenumber{}}
+%\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{navigation symbols}{\insertframenumber{}/\inserttotalframenumber{}}
+
+\begin{document}
+\frame{
+\titlepage
+}
+
+\input{example.tex}
+
+\end{document}
+
+
+
