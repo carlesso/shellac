@@ -1,0 +1,26 @@
+pensavo di articolare il discorso, da tradurre in slide, in questo modo:
+
+-spiegare la natura del progetto ovvero, in che cosa consiste e perché 
+potrebbe essere interessante/utile;
+
+-descrizione di alcune particolarità dello shellac e spiegazione sul perché
+può non essere conveniente usare un grammofono
+
+POI MI CONCENTREREI SUL LAVORO FATTO, CERCANDO DI SPIEGARE CHE:
+
+-siamo partiti da uno studio teorico del problema, facendo anche considerazioni
+di varia natura per capire la fattibilità della cosa e cosa aspettarci
+
+-abbiamo continuato analizzando il codice Matlab della scimmia per evincerne
+la struttura e il funzionamento
+
+-grazie all'analisi di cui sopra, abbiamo portato avanti un processo di 
+debugging e fixing del codice, fino ad ottenere un programma parzialmente
+funzionante
+
+PER FINIRE:
+
+-vorrei descrivere in modo molto stringato, altre riflessioni e considerazioni
+varie, da tramandare ai posteri
+
+-eventualmente lascio una slide per parlare di qualche risultato
