@@ -3,12 +3,12 @@ NAME = slides
 
 help:
 	@echo Uso:
-	@echo make all - per compilare il documento e vederne il risultato
+	@echo make - per compilare il documento e vederne il risultato
 	@echo make doc - per compilare il documento
 	@echo make clean - pulisce da files temporanei
 	@echo make deepclean - pulisce il directory corrente
 	@echo make view - per vedere il documento
-all:
+
 	pdflatex $(NAME).tex
 	pdflatex $(NAME).tex
 	#@evince -fullscreen $(NAME).pdf
