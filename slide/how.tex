@@ -20,6 +20,7 @@ Analisi preventiva per capire i problemi da affrontare:
 \end{itemize}
 \end{block}
 
+
 \begin{block}{Il processo di scansione: cosa suggerisce la teoria?}
 %Studio della letteratura per discriminare tra possibili scelte 
 \begin{itemize}
@@ -32,28 +33,50 @@ Analisi preventiva per capire i problemi da affrontare:
 
 \begin{frame}
 \frametitle{La realtà di interesse}
-\begin{block}{L'elaborazione dell'immagine: cosa suggerisce la teoria}
+\begin{block}{L'elaborazione dell'immagine: la teoria}
 Individuate tre fasi principali
-\begin{itemize}
-\item Ricerca del centro;
-\item Unwrap dell'immagine;
-%\item[*] Passaggio da coordinate cartesiane a polari(la porzione viene spalmata);
-\item Crop dell'immagine.
-\end{itemize}
+\begin{columns}[t]
+\begin{column}{6.5cm}
+\begin{description}
+\item[Ricerca del centro] Individuazione di un insieme di punti che permetta 
+di stimare le coordinate del centro e il raggio
+\item[Unwrap dell'immagine] Con i dati ricavati al punto precedente, si
+opera una trasformazione da coordinate cartesiane a polari
+\item[Crop dell'immagine] Eliminazione di porzione di immagine inutili o
+``dannose''
+\end{description}
+\end{column}
+\vline
+\begin{column}{3.5cm}
+
+\end{column}
+\end{columns}
 \end{block}
 \end{frame}
 
 \begin{frame}
 \frametitle{La realtà di interesse}
-\begin{block}{L'estrazione del suono: considerazioni preliminari}
-\'E stato necessario capire molto bene come mappare le variazioni presenti
-sul disco, in modo da effettuare una traduzione sensata e fedele.
-\end{block}
+%\begin{block}{L'estrazione del suono: considerazioni preliminari}
+%\'E stato necessario capire molto bene come mappare le variazioni presenti
+%sul disco, in modo da effettuare una traduzione sensata e fedele.
+%\end{block}
 \begin{block}{L'estrazione del suono: cosa suggerisce la teoria}
-\begin{itemize}
-\item Ricerca delle tracce;
-\item ``Inseguimento'' delle tracce;
-\item Concatenzione delle tracce.
-\end{itemize}
+\begin{columns}
+\begin{column}{6.5cm}
+\begin{description}
+\item[Ricerca delle tracce] Si ricavano, dalle immagini elaborate, le coordinate
+di inizio traccia
+\item[``Inseguimento'' delle tracce] Si effettua un \emph{edge-detection}
+intelligente, per ricavare il segnale
+\item[Concatenzione delle tracce] Attraverso un'analisi della correlazione
+tra le varie porzioni, si cercano sovrapposizioni e si giustappongono le 
+tracce
+\end{description}
+\end{column}
+\vline
+\begin{column}{3.5cm}
+
+\end{column}
+\end{columns}
 \end{block}
 \end{frame}
