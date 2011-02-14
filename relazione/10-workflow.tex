@@ -13,6 +13,26 @@ L'impostazione teorica del processo di digitalizzazione dell'informazione sonora
 \caption{Workflow generale}
 \end{center}
 \end{figure}
+
+\subsection{Considerazioni preliminari}
+Sono state messe in atto alcune considerazioni effettuate in fase 
+preliminare, al fine di capire la fattibilità del progetto e per cercare
+di evincere alcune specifiche; si è pensato che fosse fondamentale farsi
+un'idea della correlazione, necessariamente presente, tra risoluzione
+della scansione e qualità del segnale ottenuto, almeno nella fase precedente
+al filtraggio. Si sono fatti, in particolare, alcuni test sulla base di
+alcune semplici considerazioni: calcolando le dimensioni di un pixel, al
+variare della risoluzione, e conoscendo le misure relative alle traccie
+impresse sul disco, si è potuto ottenere il numero di pixel dedicati alla
+traccia stessa. Il passo successivo è stato quello di simulare, usando
+\textsc{Matlab} e alcuni brani musicali in qualità cd, il processo di 
+acquisizione in funzione delle considerazioni fatte: si è attuato un 
+processo di \emph{decimazione} del brano originale, cos\'i da ottenere una
+stima della qualità ottenibile. \\
+Queste prove hanno permesso di giungere alla conclusione che una risoluzione
+di 2400 dpi potesse essere un buon compromesso tra qualità del suono e
+trattabilità, computazionalmente parlando.
+
 \subsection{Shellac}
 I dischi in gommalacca, seppur soggetti a variazioni dovute ai diversi produttori e periodi di produzione, evidenziano delle caratteristiche il pi\`u delle volte comuni:
 \begin{itemize}
@@ -179,5 +199,45 @@ L'analisi del progetto sviluppato presso la Princeton University da Mark McCann,
 \item Associazione tra flusso del codice e modello teorico
 \item Debugging e refactoring del codice
 \end{itemize}
+
 \subsection{Analisi del codice ed estrapolazione del flusso di lavoro}
-%%manca la parte sul matlab
+La parte più rilevante, in termini di ore-uomo richieste, riguardo il
+progetto è stata probabilmente quella relativa all'analisi e al refactoring
+del codice sviluppato ma McCann et al. \\
+Il processo di analisi ha posto le sue radici nella creazione di un 
+workflow che descrivesse le dipendenze, logiche e temporali, delle chiamate
+presenti sul codice[inserire ref]. Successivamente, si è cercato di capire 
+se il codice fosse o meno funzionante e quali fossero i risultati 
+ottenibili. \\
+Il software presentava svariati errori logici piuttosto banali, che 
+comunque compromettevano la produzione dell'output promesso. Partendo
+dall'assunto che la procedura di correzione è stata talmente
+onerosa che non è stato possibile indagare sulla corretta implementazione
+dell'idea, si pone sotto una breve lista degli errori rilevati e una 
+descrizione di massima di alcune caratteristiche strutturali del codice.
+
+\begin{itemize}
+\item Presenza, come già accennato, di errori logici relativamente banali. 
+Per esempio in \texttt{get\_track.m} c'era un \texttt{Gnum\_scans} che era 
+una stringa anzichè un numero, e andava valutata. (commit 331ba17a);
+\item Non prevista la gestione di immagini non in scala di grigi;
+\item Nella procedura di \emph{detection} dei bordi, la
+\emph{threshold} era troppo alta (veniva fatta una spaccatura bianco-nero). 
+Praticamente non veniva trovato il bordo a causa di una componente
+grigia sullo sfondo delle nostre scansioni (commit 8b528741);
+\item Qualora poi fosse presente dell'errore nel rilevamento del numero 
+di traccie 
+per scansione, il match falliva. Ad esempio, se la scansione nord 
+dava 10 traccie e la scansione est ne dava 8 il software usciva in malo
+modo. Una soluzione, seppur parziale, è stata quella di usare 
+sempre l'ultima riga nel caso ne mancassero (commit 331ba17a).
+\end{itemize}
+
+Oltre a ciò può essere utile considerare che, in mezzo al codice, erano
+presenti molte routine abbandonate o rimpiazzate e commentate: questo 
+aspetto meriterebbe forse attenzione, in particolare, può essere utile
+capire perché ci siano delle funzioni scritte ma non utilizzate.
+
+Per meglio muoversi all'interno del codice, può infine essere d'aiuto
+sapere che sono presenti delle subroutine che permettono di riprendere 
+l'esecuzione, partendo da dati parziali.
