@@ -203,7 +203,7 @@ L'analisi del progetto sviluppato presso la Princeton University da Mark McCann,
 \subsection{Analisi del codice ed estrapolazione del flusso di lavoro}
 La parte più rilevante, in termini di ore-uomo richieste, riguardo il
 progetto è stata probabilmente quella relativa all'analisi e al refactoring
-del codice sviluppato ma McCann et al. \\
+del codice sviluppato da McCann et al. \\
 Il processo di analisi ha posto le sue radici nella creazione di un 
 workflow che descrivesse le dipendenze, logiche e temporali, delle chiamate
 presenti nel codice[inserire ref]. 
@@ -220,20 +220,20 @@ Il software presentava svariati errori logici piuttosto banali, che
 comunque compromettevano la produzione dell'output promesso. Partendo
 dall'assunto che la procedura di correzione è stata talmente
 onerosa che non è stato possibile indagare sulla corretta implementazione
-dell'idea, si pone sotto una breve lista degli errori rilevati e una 
+dell'idea, si presenta, nel seguito, una breve lista degli errori rilevati e una 
 descrizione di massima di alcune caratteristiche strutturali del codice.
 
 \begin{itemize}
 \item Presenza, come già accennato, di errori logici relativamente banali. 
 Per esempio in \texttt{get\_track.m} c'era un \texttt{Gnum\_scans} che era 
-una stringa anzichè un numero, e andava valutata. (commit 331ba17a);
+una stringa anzich\'e un numero, e andava valutata. (commit 331ba17a);
 \item Non prevista la gestione di immagini non in scala di grigi;
 \item Nella procedura di \emph{detection} dei bordi, la
 \emph{threshold} era troppo alta (veniva fatta una spaccatura bianco-nero). 
 Praticamente non veniva trovato il bordo a causa di una componente
 grigia sullo sfondo delle nostre scansioni (commit 8b528741);
 \item Qualora poi fosse presente dell'errore nel rilevamento del numero 
-di traccie 
+di tracce 
 per scansione, il match falliva. Ad esempio, se la scansione nord 
 dava 10 traccie e la scansione est ne dava 8 il software usciva in malo
 modo. Una soluzione, seppur parziale, è stata quella di usare 
