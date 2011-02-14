@@ -133,7 +133,7 @@ Una volta determinato il centro del disco, si procede al ``raddrizzamento'' dell
 \caption{Rappresentazione in coordinate polari}
 \end{center}
 \end{figure}
-Sia $v(x,y)$ un punto dell'immagine in coordinate cartesiane, la sua trasformazione in coordinate polari sar\`a: $u(r,\theta) = v(x_c+rcos(\theta), y_c+rsin(\theta))$, dove $r$ e $\theta$ sono definiti in figura \ref{cartesio}
+Sia $v(x,y)$ un punto dell'immagine in coordinate cartesiane, la sua trasformazione in coordinate polari sar\`a: $u(r,\theta) = v(x_c+r\cos(\theta), y_c+r\sin(\theta))$, dove $r$ e $\theta$ sono definiti in figura \ref{cartesio}
 \subsubsection{Crop}
 Il cropping elimina parti non necessarie dell'immagine, come per esempio quelle relative all'etichetta, in modo da ottenere un file di
 \begin{figure}[h!t]
@@ -151,9 +151,9 @@ Una volta determinato il centro e croppata l'immagine si prosegue alla localizza
 Ogni immagine derivante da scansione viene memorizzata in forma matriciale 
 $$I(h,w) = \begin{pmatrix} 
 	I(1,1) && \ldots && I(1,w) \\
-	\vdots && \vdots && \vdots \\
+	\vdots && \ddots && \vdots \\
 	I(h,1) && \ldots && I(h,w)
-\end{pmatrix}$$  $$I(h,w) \in \{0, 1,2,\ldots, 255\}$$
+\end{pmatrix}$$  $$I(h,w) \in \{0, 1,2,\dots, 255\}$$
 L'algoritmo di localizzazione fa affidamento sul fatto che i pixel appartenenti a tracce risultino molto pi\`u luminosi rispetto agli altri, quindi sommando i pixel relativi alle righe di $I(h,w)$ (facendo quindi variare l'indice di colonna) si avranno dei picchi in corrispondenza delle tracce (righe).
 \begin{figure}[h!t]
 \begin{center}
@@ -190,14 +190,14 @@ Ad ogni passo dell'algoritmo il vettore di 5 pixel viene spostato in avanti di u
 \caption{Concatenazione delle tracce}\label{fading}
 \end{center}
 \end{figure}
-Una volta ottenuti gli spezzoni ti tracce da ogni singola immagine, questi devono essere concatenati in modo da ricostruire il brano originale. Una spiegazione grafica di questo processo \`e offerta in figura \ref{fading}
+Una volta ottenuti gli spezzoni ti tracce da ogni singola immagine, questi devono essere concatenati in modo da ricostruire il brano originale. Una spiegazione grafica di questo processo \`e offerta in [\ref{fading}]
 \section{Il progetto analizzato}
 L'analisi del progetto sviluppato presso la Princeton University da Mark McCann, Paul Calamia e Nir Ailon si \`e articolata in quattro fasi:
 \begin{itemize}
-\item Analisi del codice Matlab
-\item Creazione del flusso di lavoro
-\item Associazione tra flusso del codice e modello teorico
-\item Debugging e refactoring del codice
+\item analisi del codice Matlab
+\item creazione del flusso di lavoro
+\item associazione tra flusso del codice e modello teorico
+\item debugging e refactoring del codice
 \end{itemize}
 
 \subsection{Analisi del codice ed estrapolazione del flusso di lavoro}
@@ -224,15 +224,15 @@ dell'idea, si presenta, nel seguito, una breve lista degli errori rilevati e una
 descrizione di massima di alcune caratteristiche strutturali del codice.
 
 \begin{itemize}
-\item Presenza, come già accennato, di errori logici relativamente banali. 
+\item presenza, come già accennato, di errori logici relativamente banali. 
 Per esempio in \texttt{get\_track.m} c'era un \texttt{Gnum\_scans} che era 
 una stringa anzich\'e un numero, e andava valutata. (commit 331ba17a);
-\item Non prevista la gestione di immagini non in scala di grigi;
-\item Nella procedura di \emph{detection} dei bordi, la
+\item non prevista la gestione di immagini non in scala di grigi;
+\item nella procedura di \emph{detection} dei bordi, la
 \emph{threshold} era troppo alta (veniva fatta una spaccatura bianco-nero). 
 Praticamente non veniva trovato il bordo a causa di una componente
 grigia sullo sfondo delle nostre scansioni (commit 8b528741);
-\item Qualora poi fosse presente dell'errore nel rilevamento del numero 
+\item qualora poi fosse presente dell'errore nel rilevamento del numero 
 di tracce 
 per scansione, il match falliva. Ad esempio, se la scansione nord 
 dava 10 traccie e la scansione est ne dava 8 il software usciva in malo
